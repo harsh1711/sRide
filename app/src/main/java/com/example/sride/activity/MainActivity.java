@@ -106,25 +106,28 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void checkIfDateIsPrimeOrNor(int dayOfMonth, int monthOfYear, int year) {
-        boolean isPrime = AppUtils.isPrimeNumber(dayOfMonth);
-        if (isPrime) {
-            long unixTime = DateUtils.getUnixTime(dayOfMonth, monthOfYear, year);
-            String date = DateUtils.getDateInString(dayOfMonth, monthOfYear, year);
-            String dayOfWeek = DateUtils.getDayOfWeek(dayOfMonth, monthOfYear, year);
-            callApi(unixTime, date, dayOfWeek);
+        if (AppUtils.isPrimeNumber(dayOfMonth)) {
+            fetchWeatherDetails(dayOfMonth, monthOfYear, year);
         } else {
-            Toast.makeText(this,getString(R.string.select_prime_date),Toast.LENGTH_LONG).show();
+            Toast.makeText(this, getString(R.string.select_prime_date), Toast.LENGTH_LONG).show();
             setTemperatureLayoutVisibility(View.GONE);
         }
+    }
+
+    private void fetchWeatherDetails(int dayOfMonth, int monthOfYear, int year) {
+        long unixTime = DateUtils.getUnixTime(dayOfMonth, monthOfYear, year);
+        String date = DateUtils.getDateInString(dayOfMonth, monthOfYear, year);
+        String dayOfWeek = DateUtils.getDayOfWeek(dayOfMonth, monthOfYear, year);
+        callWeatherApi(unixTime, date, dayOfWeek);
     }
 
     private void setTemperatureLayoutVisibility(int visibility) {
         activityMainBinding.temperatureCl.setVisibility(visibility);
     }
 
-    private void callApi(long unixTime, String date, String weekday) {
-        String str = "18.520430,73.856743";
-        str = str.concat(",").concat(unixTime + "");
-        mainActivityViewModel.callAPI(str, date, weekday);
+    private void callWeatherApi(long unixTime, String date, String weekday) {
+        String latLongString = "18.520430,73.856743";
+        latLongString = latLongString.concat(",").concat(unixTime + "");
+        mainActivityViewModel.callWeatherApi(latLongString, date, weekday);
     }
 }

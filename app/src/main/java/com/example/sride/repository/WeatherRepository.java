@@ -1,7 +1,6 @@
 package com.example.sride.repository;
 
 import android.app.Application;
-import android.util.Log;
 import android.widget.Toast;
 
 import androidx.lifecycle.LiveData;
@@ -11,7 +10,6 @@ import com.example.sride.db.RoomDBHelper;
 import com.example.sride.model.WeatherDataDto;
 import com.example.sride.model.WeatherDto;
 import com.example.sride.service.RetrofitInstance;
-import com.google.gson.Gson;
 
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
@@ -40,7 +38,7 @@ public class WeatherRepository {
         return weatherDto.getWeather();
     }
 
-    public void callAPI(String str, final String date, final String weekday) {
+    public void callWeatherApi(String str, final String date, final String weekday) {
         RetrofitInstance.getV1Service().getWeather(str).enqueue(new Callback<WeatherDto>() {
             @Override
             @EverythingIsNonNull

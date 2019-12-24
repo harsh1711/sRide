@@ -22,7 +22,7 @@ public class MainActivityViewModel extends AndroidViewModel {
         return weatherRepository.getMutableLiveDrugData();
     }
 
-    public void callAPI(String str, String date, String weekday) {
-        weatherRepository.callAPI(str,date,weekday);
+    public void callWeatherApi(String str, String date, String weekday) {
+        weatherRepository.callWeatherApi(str,date,weekday);
     }
 }
