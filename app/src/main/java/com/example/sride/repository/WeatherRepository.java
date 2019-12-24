@@ -53,7 +53,6 @@ public class WeatherRepository {
                         weatherDtoCurrently.setDay(weekday);
                         insertIntoDB(weatherDto);
                     }
-                    Log.e("weatherDto", new Gson().toJson(weatherDto));
                 }
             }
 
