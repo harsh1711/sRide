@@ -5,6 +5,7 @@ import android.content.Context;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.DatePicker;
+import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.databinding.DataBindingUtil;
@@ -112,6 +113,7 @@ public class MainActivity extends AppCompatActivity {
             String dayOfWeek = DateUtils.getDayOfWeek(dayOfMonth, monthOfYear, year);
             callApi(unixTime, date, dayOfWeek);
         } else {
+            Toast.makeText(this,getString(R.string.select_prime_date),Toast.LENGTH_LONG).show();
             setTemperatureLayoutVisibility(View.GONE);
         }
     }

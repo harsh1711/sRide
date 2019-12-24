@@ -9,4 +9,5 @@
     <string name="ok">OK</string>
     <string name="no_internet_msg">Please connect to internet and retry</string>
     <string name="splash_screen_icon">Splash screen icon</string>
+    <string name="select_prime_date">Select prime date to see weather data</string>
 </resources>
